@@ -37,18 +37,31 @@ def fun(k):
     y = []
     for i in range(11):
         x.append(i)
-    
     for i in range(11):
-        s = x[i]
-        d = k * s
+        d = k * x[i]
         print(d)
         y.append(d)
-    plt.plot(x, y, color='r')
-    plt.ylabel(f'y = k*x, k = {k}')
-    plt.grid(color='b')
-    plt.xlim(-10, 10)
-    plt.ylim(-10,10)
-    plt.show()
-fun(-3.4)
+    print(y)
+    global xy1
+    xy1 = (x[1], y[1])
+    global xy2
+    xy2 = (x[2], y[2])
+fun(1)
+plt.axline(xy1, xy2, color='red')
+fun(-1)
+plt.axline(xy1, xy2, color='red')
+fun(-2)
+plt.axline(xy1, xy2, color='purple')
+fun(-0.5)
+plt.axline(xy1, xy2, color='green')
+plt.title(f'y = k*x')
+plt.legend([f'k=1','k=-1', f'k=-2', 'k=-0.5'])
+plt.text(-5, 9, 'Чем больше k, тем меньше наклон к оси x', bbox={'facecolor':'yellow','alpha':1})
+plt.xlim(-15, 15)
+plt.ylim(-15, 15)
+plt.axvline(0)
+plt.axhline(0)
+plt.show()
+
 # plt.plot(x, y, color='r')
 # plt.show()
